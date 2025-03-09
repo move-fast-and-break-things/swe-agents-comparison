@@ -5,9 +5,14 @@ FROM node:18.20.4
 ARG GITHUB_TOKEN
 ENV GITHUB_TOKEN=$GITHUB_TOKEN
 
+ARG GITHUB_EMAIL
+ARG GITHUB_NAME
+
 WORKDIR /root
 
 RUN apt-get update && apt-get install -y git
+RUN git config --global user.email "$GITHUB_EMAIL"
+RUN git config --global user.name "$GITHUB_NAME"
 
 # Clone the Aibyss repo
 RUN git clone https://$GITHUB_TOKEN@github.com/move-fast-and-break-things/aibyss.git aibyss
@@ -22,5 +27,7 @@ RUN npm install -g @anthropic-ai/claude-code@0.2.35
 RUN apt-get update && apt-get install -y pipx
 RUN pipx ensurepath
 RUN pipx install aider-chat==0.75.2
+
+WORKDIR /root/aibyss
 
 ENTRYPOINT ["/bin/bash", "-l"]
