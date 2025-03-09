@@ -21,6 +21,6 @@ RUN npm install -g @anthropic-ai/claude-code@0.2.35
 # Install Aider
 RUN apt-get update && apt-get install -y pipx
 RUN pipx ensurepath
-RUN pipx install aider-chat==0.75.0
+RUN pipx install aider-chat==0.75.2
 
 ENTRYPOINT ["/bin/bash", "-l"]
