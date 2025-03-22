@@ -26,7 +26,7 @@ RUN npm install -g @anthropic-ai/claude-code@0.2.35
 # Install Aider
 RUN apt-get update && apt-get install -y pipx
 RUN pipx ensurepath
-RUN pipx install aider-chat==0.75.2
+RUN pipx install aider-chat==0.78.0
 
 WORKDIR /root/aibyss
 
